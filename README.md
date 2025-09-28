@@ -32,12 +32,6 @@ Frontend (Optional): React.js
 
 Helps commuters easily track their bus’s estimated arrival times and current location, enabling smarter travel decisions without relying on manual updates.
 
-⚡️ Next Steps
-
-Build a responsive frontend dashboard
-
-Add Realtime Map visualization with markers
-
 Implement user authentication (Optional)
 
 Improve error handling and edge-case scenarios
