@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime, timedelta
 import pytz
 import requests
+import os
+from dotenv import load_dotenv
 
 app = FastAPI()
 
@@ -17,12 +19,13 @@ app.add_middleware(
 )
 
 # Supabase config
-SUPABASE_URL = "https://ebjlrvevjnhxptsqnvbi.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImViamxydmV2am5oeHB0c3FudmJpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5Njc5MjUsImV4cCI6MjA2NDU0MzkyNX0.MKrzSfB3IrGdHDbiLkgUk2C6zmDfH1ot7Uvay-wCb8M"
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+load_dotenv()  # Load variables from .env
 
-# Google Maps API Key
-GOOGLE_MAPS_API_KEY = "AIzaSyBW-qg_iQkuBMC_1BmilF2RC_OCNiCeF2I"
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 
 # Convert location to coordinates
 def geocode_location(place_name: str):
